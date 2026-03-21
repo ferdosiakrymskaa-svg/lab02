@@ -259,42 +259,30 @@ edit REPORT.md
 
 
 
-## Part I: Начало работы с репозиторием
+# Homework
 [Репозиторий Homework_lab02](https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git)
-### 1. Создание репозитория на GitHub
-Был создан пустой репозиторий `Homework_lab02` на GitHub.
 
-### 2. Создание первого коммита
-```bash
-echo "# Homework_lab02" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git
-git push -u origin main
-```
 
-**Результат выполнения:**
-```
-Reinitialized existing Git repository in /home/ilya_ilyasov/ferdosiakrymskaa-svg/workspace/projects/lab02_hw/.git/
-[master (root-commit) 704ff46] first commit
- 1 file changed, 1 insertion(+)
- create mode 100644 README.md
-Username for 'https://github.com': ferdosiakrymskaa-svg
-Password for 'https://ferdosiakrymskaa-svg@github.com': 
-Enumerating objects: 3, done.
-Counting objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 233 bytes | 233.00 KiB/s, done.
-Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git
- * [new branch]      main -> main
-branch 'main' set up to track 'origin/main'.
-```
+## Часть 1
+#### I Создайте пустой репозиторий на сервисе github.com (или gitlab.com, или bitbucket.com).
+Создали пустой репозиторий на сайте `github.com`.
 
-### 3. Создание файла hello_world.cpp с "плохим стилем"
-```bash
-cat > hello_world.cpp <<EOF
+
+#### II Выполните инструкцию по созданию первого коммита на странице репозитория, созданного на предыдещем шаге.
+Выполнили инструкцию по созданию первого коммита на странице репозитория, созданного на предыдущем шаге.
+
+
+#### III Создайте файл `hello_world.cpp` в локальной копии репозитория (который должен был появиться на шаге. Реализуйте программу `Hello world` на языке C++ используя плохой стиль кода. Например, после заголовочных файлов вставьте строку `using namespace std;`.
+Создали файл `hello_world.cpp` в локальной копии репозитория с помощью команды: 
+```sh
+touch hello_world.cpp
+```
+Далее реализовали программу `Hello world` на языке C++ используя плохой стиль кода, в окне редактора `nano`:
+```sh
+nano hello_world.cpp
+```
+Код программы:
+```sh
 #include <iostream>
 using namespace std;
 
@@ -302,128 +290,129 @@ int main() {
     cout << "Hello world" << endl;
     return 0;
 }
-EOF
 ```
 
-### 4. Добавление файла в репозиторий
-```bash
+
+#### IV Добавьте этот файл в локальную копию репозитория.
+Добавили файл `hello_world.cpp` в локальную копию репозитория в помощью с помощью команды:
+```sh
 git add hello_world.cpp
 ```
 
-### 5. Первый коммит с программой
-```bash
-git commit -m "Add Hello World program with bad style"
-```
 
-**Результат:**
+#### V Закоммитьте изменения с осмысленным сообщением.
+Закоммитили изменения с осмысленным сообщением с помощью команды:
+```sh
+git commit -am "Добалили файл hello_world.cpp с использованием `using namespace std`"
 ```
-[main 11ac9d4] Add Hello World program with bad style
- 1 file changed, 6 insertions(+)
- create mode 100644 hello_world.cpp
-```
+Параметр `-a` делает все добавленные и измененые файлы отслеживаемыми, поэтому в процессе коммитов далее не понадобится вводить команду `git add hello_world.cpp`.
 
-### 6. Модификация программы с запросом имени пользователя
-```cpp
+
+#### VI Изменитьте исходный код так, чтобы программа через стандартный поток ввода запрашивалось имя пользователя. А в стандартный поток вывода печаталось сообщение Hello world from @name, где @name имя пользователя.
+Изменили исходный, чтобы через стандартный поток ввода запрашивалось имя пользователя, а в стандартный поток вывода печаталось сообщениесообщение Hello world from @name, где @name имя пользователя:
+Код после изменений в редакторе `nano`, который можно открыть для редакции данного файла с помощью команды `nano hello_world.cpp`:
+```sh
 #include <iostream>
 #include <string>
+using namespace std;
 
-int main() {
-    std::cout << "Enter your name: ";
-    std::string name;
-    std::cin >> name;
-    std::cout << "Hello world from " << name << std::endl;
+int main()
+{
+    string name;
+    cout << "Input your name: ";
+    cin >> name;
+    cout << "Hello world from "<<name << endl;
     return 0;
 }
+
 ```
 
-### 7. Коммит изменений
-```bash
-git commit -am "Добавлен ввод имени пользователя в программу Hello World"
-```
 
-**Результат:**
+#### VII Закоммитьте новую версию программы. Почему не надо добавлять файл повторно git add?
+Закоммитили новую версию программы с помощью команды:
+```sh
+git commit -m "Добавили ввод в имени пользователя через стандартный поток ввода"
 ```
-[main 44278e2] Добавлен ввод имени пользователя в программу Hello World
- 1 file changed, 5 insertions(+), 2 deletions(-)
-```
+`git add` не нужно добавлять повторно, так как мы ранее прорисали в первом коммите параметр `-a` который сделал файл отслеживаемым.
+Результат работы программы `git log`:
+```sh
+commit 19c36a595c3de431132ff42878aa791e2e4ea7f2 (HEAD -> main)
+Author: ferdosiakrymskaa-svg <ferdosiakrymskaa@gmail.com>
+Date:   Sat Mar 21 19:23:55 2026 +0000
 
-> **Почему не нужен git add?**  
-> Флаг `-a` в `git commit -am` автоматически добавляет все изменения в отслеживаемых файлах. `git add` требуется только для новых (неотслеживаемых) файлов.
+    Добалили файл hello_world.cpp с использованием
 
-### 8. Отправка изменений на GitHub
-```bash
-git push origin main
+commit 781a476048b439ec099454889094b1020309bac2 (origin/main)
+Author: ferdosiakrymskaa-svg <ferdosiakrymskaa@gmail.com>
+Date:   Wed Mar 18 14:34:40 2026 +0000
 ```
-
-**Результат:**
-```
-Username for 'https://github.com': ferdosiakrymskaa-svg
-Password for 'https://ferdosiakrymskaa-svg@github.com': 
-Enumerating objects: 7, done.
-Counting objects: 100% (7/7), done.
-Delta compression using up to 3 threads
-Compressing objects: 100% (6/6), done.
-Writing objects: 100% (6/6), 857 bytes | 857.00 KiB/s, done.
-Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git
-   704ff46..44278e2  main -> main
-```
-
-### 9. Проверка истории коммитов в удаленном репозитории
-```bash
-git log origin/main --oneline
-```
-
-**Результат:**
-```
-44278e2 (HEAD -> main, origin/main) Добавлен ввод имени пользователя в программу Hello World
-48cab2c Add Hello World program with bad style
-704ff46 first commit
-```
-
 ---
 
-## Part II: Работа с ветками и pull-реквестами
-
-### 1. Создание ветки patch1
-```bash
-git checkout -b patch1
+#### VIII Запуште изменения в удалёный репозиторий.
+Пушим изменения в удаленный репозиторий с помощью команды:
+```sh
+git push origin main
 ```
-```
-Switched to a new branch 'patch1'
-```
-
-### 2. Исправление кода (удаление using namespace std;)
-```cpp
-#include <iostream>
-#include <string>
-
-int main() {
-    std::cout << "Enter your name: ";
-    std::string name;
-    std::cin >> name;
-    std::cout << "Hello world from " << name << std::endl;
-    return 0;
-}
-```
-
-### 3. Коммит и отправка ветки
-```bash
-git commit -am "Удалить 'using namespace std'"
-git push -u origin patch1
-```
-
-**Результат:**
-```
-[patch1 11a9728] Удалить 'using namespace std'
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Результат работы программы:
+```sh
 Username for 'https://github.com': ferdosiakrymskaa-svg
 Password for 'https://ferdosiakrymskaa-svg@github.com': 
 Enumerating objects: 5, done.
 Counting objects: 100% (5/5), done.
 Delta compression using up to 3 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 455 bytes | 455.00 KiB/s, done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 478 bytes | 478.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git
+   781a476..52e5061  main -> main
+```
+
+
+#### IX Проверьте, что история коммитов доступна в удалёный репозитории.
+Из результата работы программы в прошлом пункте видно, что все коммиты были внесены в удаленный репозиторий из локального.
+
+
+## Часть 2
+
+#### I В локальной копии репозитория создайте локальную ветку `patch1`.
+Создали в локальной копии репозитория локальную ветку `patch1` с помощью команды:
+```sh
+git branch patch1
+```
+#### II Внесите изменения в ветке `patch1` по исправлению кода и избавления от `using namespace std;`.
+Переключаемся на ветку `patch1` с помощью команды `git checkout patch1`.
+Редактируем с помощью редактора `nano` с помощью команды `nano hello_world.cpp`. Данный файл после редактирования:
+```sh
+#include <iostream>
+#include <string>
+
+
+int main()
+{
+    std::string name;
+    std::cout << "Input your name: ";
+    std::cin >> name;
+    std::cout << "Hello world from "<<name << std::endl;
+    return 0;
+}
+```
+
+#### III `commit`, `push` локальную ветку в удалённый репозиторий.
+Сделали коммит и пуш локальной ветки в удаленный рпозиторий с помощью команд:
+```sh
+git commit -am "Избавились от using namespace std"
+git push -u origin patch1
+```
+Параметр `-u` позволяет единожды прописать `git push -u origin patch1` далее можно будет прописывать только `git push`.
+
+#### IV Проверьте, что ветка `patch1` доступна в удалёный репозитории.
+Проверили, что ветка `patch1` доступна в удаленный репозиторий тем, что вывело в терминал при вводе придыдущих команд:
+```sh
+numerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 3 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 422 bytes | 422.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 remote: 
 remote: Create a pull request for 'patch1' on GitHub by visiting:
@@ -433,226 +422,157 @@ To https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git
  * [new branch]      patch1 -> patch1
 branch 'patch1' set up to track 'origin/patch1'.
 ```
-
-### 4. Проверка наличия ветки в удаленном репозитории
-```bash
-git log origin/patch1 --oneline
+#### V Создайте  `pull-request` `patch1 -> master`.
+Создали `pull-request` ветки `patch1 -> master` в терминале с помощью следующих команд:
+```sh
+gh auth login
 ```
-
-**Результат:**
+Данная команда позволяет пройти аунтефикацию в терминале(процесс аунтефикации):
+```sh
+ What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? HTTPS
+? Authenticate Git with your GitHub credentials? Yes
+? How would you like to authenticate GitHub CLI? Paste an authentication token
+Tip: you can generate a Personal Access Token here https://github.com/settings/tokens
+The minimum required scopes are 'repo', 'read:org', 'workflow'.
+? Paste your authentication token: ****************************************
+- gh config set -h github.com git_protocol https
+✓ Configured git protocol
+✓ Logged in as ferdosiakrymskaa-svg
 ```
-11a9728 (HEAD -> patch1, origin/patch1) Удалить 'using namespace std'
-d206f72 (origin/main, main) Добавлен ввод имени пользователя в программу Hello World
-11ac9d4 Add Hello World program with bad style
-b6b2a6e first commit
+С помощью следующей команды выполняем непосредственно `pull-request`:
+```sh
+gh pr create --base main
 ```
+`gh` означает GitHub, `pr` -  `pull-request`, `base` показывает, в какую ветку мы хотим влить данные из выбранной.
+Результат работы программы:
+```sh
+Warning: 1 uncommitted change
 
-### 5. Создание pull-реквеста
-Pull-реквест создан через веб-интерфейс GitHub из ветки `patch1` в `main`.
+Creating pull request for patch1 into main in ferdosiakrymskaa-svg/Homework_lab02
 
-### 6. Добавление комментариев в код
-```cpp
-#include <iostream>
-#include <string>
+? Title Избавились от using namespace std
+? Body <Received>
+? What's next? Submit
+https://github.com/ferdosiakrymskaa-svg/Homework_lab02/pull/1
+```
+#### VI В локальной копии в ветке `patch1` добавьте в исходный код комментарии.
+Добавили комметарии в исходный код с помощью редактора `nano`. Новый код с комментариями:
+```sh
+#include <iostream>//Библиотека для ввода\вывода
+#include <string>//Библиотека для работы со строками
 
-int main() {
-    // Запрос имени у пользователя  
-    std::cout << "Enter your name: ";
-    std::string name;
-    std::cin >> name;
-    // Вывод персонализированного приветствия
-    std::cout << "Hello world from " << name << std::endl;
-    
+
+int main()
+{
+    std::string name;//Переменная, хранящая имя пользователя
+    std::cout << "Input your name: ";//Печатает комментарий, который говорит, что пользователю необходимо ввести
+    std::cin >> name;//Ввод имени пользователя
+    std::cout << "Hello world from "<<name << std::endl;//Вывод программы
     return 0;
 }
 ```
-
-### 7. Коммит и отправка изменений
-```bash
-git commit -am "Добавить поясняющие комментарии в код"
+#### VII **commit**, **push**.
+Выполнили коммит и пуш в удаленный репозиторий:
+```sh
+git commit -am "Добавили комментарии в код"
 git push
 ```
-
-**Результат:**
-```
-[patch1 fb3e14b] Добавить поясняющие комментарии в код
- 1 file changed, 4 insertions(+), 2 deletions(-)
-Username for 'https://github.com': ferdosiakrymskaa-svg
-Password for 'https://ferdosiakrymskaa-svg@github.com': 
+Результат работы команд:
+```sh
 Enumerating objects: 5, done.
 Counting objects: 100% (5/5), done.
 Delta compression using up to 3 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 591 bytes | 591.00 KiB/s, done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 636 bytes | 636.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 To https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git
-   11a9728..fb3e14b  patch1 -> patch1
+   77bb14d..717e553  patch1 -> patch1
 ```
+#### VIII Проверьте, что новые изменения есть в созданном на **шаге 5** pull-request
+Да, действительно, новые изменения есть в `pull-request`.
 
-### 8. Проверка обновлений в pull-реквесте
-```bash
-gh pr status
+#### IX В удалённый репозитории выполните  слияние PR `patch1 -> master` и удалите ветку `patch1` в удаленном репозитории.
+Выполнили указанные действия на странице GitHub.
+#### X Локально выполните **pull**.
+```sh
+git pull
 ```
-
-**Результат:**
-```
-Relevant pull requests in ferdosiakrymskaa-svg/Homework_lab02
-
-Current branch
-  #1  Удалить 'using namespace std' [patch1]
-
-Created by you
-  #1  Удалить 'using namespace std' [patch1]
-
-Requesting a code review from you
-  You have no pull requests to review
-```
-
-### 9. Слияние pull-реквеста и удаление ветки
-```bash
-gh pr merge 1 --merge --delete-branch
-```
-
-**Результат:**
-```
-✓ Merged pull request #1 (Удалить 'using namespace std')
-remote: Enumerating objects: 1, done.
-remote: Counting objects: 100% (1/1), done.
-remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
-Unpacking objects: 100% (1/1), 936 bytes | 936.00 KiB/s, done.
-From https://github.com/ferdosiakrymskaa-svg/Homework_lab02
- * branch            main       -> FETCH_HEAD
-   d206f72..cc1de60  main       -> origin/main
-Updating d206f72..cc1de60
+Результат работы команды(`pull` для ветки `main`):
+```sh
+Updating 52e5061..ca6d371
 Fast-forward
- hello_world.cpp | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
-✓ Deleted local branch patch1 and switched to branch main
-✓ Deleted remote branch patch1
+ hello_world.cpp | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 ```
+#### XI С помощью команды **git log** просмотрите историю в локальной версии ветки `master`.
+Результат работы команды:
+```sh
+commit ca6d3715e849b54f1c3e06fda093568f3a91b5af (HEAD -> main, origin/main)
+Merge: 52e5061 717e553
+Author: Ilyasov_Ilya <ferdosiakrymskaa@gmail.com>
+Date:   Sat Mar 21 20:59:17 2026 +0000
 
-### 10. Синхронизация локальной ветки main
-```bash
-git checkout main
-git pull origin main
-```
+    Merge pull request #1 from ferdosiakrymskaa-svg/patch1
+    
+    Избавились от using namespace std
 
-**Результат:**
-```
-Already on 'main'
-Your branch is up to date with 'origin/main'.
-From https://github.com/ferdosiakrymskaa-svg/Homework_lab02
- * branch            main       -> FETCH_HEAD
-Already up to date.
-```
+commit 717e5539c5022dcb64f884d07c79719878fdf535 (origin/patch1, patch1)
+Author: ferdosiakrymskaa-svg <ferdosiakrymskaa@gmail.com>
+Date:   Sat Mar 21 20:41:53 2026 +0000
 
-### 11. Просмотр истории коммитов
-```bash
-git log --oneline --graph
-```
+    Добавили комментарии в код
 
-**Результат:**
-```
-*   cc1de60 (HEAD -> main, origin/main) Merge pull request #1 from ferdosiakrymskaa-svg/patch1
-|\  
-| * fb3e14b Добавить поясняющие комментарии в код
-| * 11a9728 Удалить 'using namespace std'
-* | d206f72 Добавлен ввод имени пользователя в программу Hello World
-* | 11ac9d4 Add Hello World program with bad style
-|/  
-* b6b2a6e first commit
-```
+commit 77bb14d06541ea284f758427148ef59a82fedf15
+Author: ferdosiakrymskaa-svg <ferdosiakrymskaa@gmail.com>
+Date:   Sat Mar 21 19:59:10 2026 +0000
 
-### 12. Удаление локальной ветки patch1
-```bash
+    Избавились от using namespace std
+
+commit 52e506115a26250f3f85057b5403d39c22680fbb
+Author: ferdosiakrymskaa-svg <ferdosiakrymskaa@gmail.com>
+Date:   Sat Mar 21 19:23:55 2026 +0000
+
+    Добавили ввод в имени пользователя через стандартный поток ввода
+```
+#### XII Удалите локальную ветку `patch1`.
+Удаляем ветку `patch1` с помощью данной команды(параметр `-d` - delete):
+```sh
 git branch -d patch1
-git branch
+```
+Результат работы программы:
+```sh
+Deleted branch patch1 (was 717e553).
 ```
 
-**Результат:**
-```
-* main
-```
+# Часть 3
 
----
-
-## Part III: Работа с конфликтами и rebase
-
-### 1. Создание ветки patch2
-```bash
-git checkout main
-git pull origin main
+#### I Создайте новую локальную ветку `patch2`.
+Создали ветку и сразу выбрали ее с помощью команды:
+```sh
 git checkout -b patch2
 ```
-
-**Результат:**
-```
-Already on 'main'
-Your branch is up to date with 'origin/main'.
-From https://github.com/ferdosiakrymskaa-svg/Homework_lab02
- * branch            main       -> FETCH_HEAD
-Already up to date.
-Switched to a new branch 'patch2'
-```
-
-### 2. Применение clang-format в стиле Mozilla
-```bash
-sudo apt install clang-format
+#### II Измените *code style* с помощью утилиты [**clang-format**](http://clang.llvm.org/docs/ClangFormat.html). Например, используя опцию `-style=Mozilla`.
+Изменили формат файла `hello_world.cpp` на `Mozilla` с помощью команды(параметр `-i` позволяет изменить именно стиль файла, а не просто вывести в терминал в формате `Mozilla`):
+```sh
 clang-format -style=Mozilla -i hello_world.cpp
-git diff
 ```
-
-**Результат форматирования:**
-```diff
-diff --git a/hello_world.cpp b/hello_world.cpp
-index d26c56a..71fde7f 100644
---- a/hello_world.cpp
-+++ b/hello_world.cpp
-@@ -1,14 +1,15 @@
- #include <iostream>
- #include <string>
- 
--int main(){
--    // Запрос имени у пользователя  
--    std::cout << "Enter your name: ";
--    std::string name;
--    std::cin >> name;
--    // Вывод персонализированного приветствия
--    std::cout << "Hello world from "<<name << std::endl;
--    
--    return 0;
--}
-+int
-+main()
-+{
-+  // Запрос имени у пользователя
-+  std::cout << "Enter your name: ";
-+  std::string name;
-+  std::cin >> name;
-+  // Вывод персонализированного приветствия
-+  std::cout << "Hello world from " << name << std::endl;
-+
-+  return 0;
-+}
-```
-
-### 3. Коммит и создание pull-реквеста
-```bash
-git commit -am "Apply Mozilla code style"
+#### III **commit**, **push**, создайте pull-request `patch2 -> master`.
+Выполнили коммит и запушили изменения с помощью следующих команд:
+```sh
+git commit -am "Изменили стиль на Mozzila"
 git push -u origin patch2
 ```
+Результат работы команд:
+```sh
+[patch2 48cdb47] Изменили стиль на Mozzila
+ 1 file changed, 10 insertions(+), 9 deletions(-)
 
-**Результат:**
-```
-[patch2 df3cfec] Apply Mozilla code style
- 1 file changed, 11 insertions(+), 10 deletions(-)
-Username for 'https://github.com': ferdosiakrymskaa-svg
-Password for 'https://ferdosiakrymskaa-svg@github.com': 
 Enumerating objects: 5, done.
 Counting objects: 100% (5/5), done.
 Delta compression using up to 3 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 404 bytes | 404.00 KiB/s, done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 471 bytes | 235.00 KiB/s, done.
 Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 remote: 
@@ -662,128 +582,90 @@ remote:
 To https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git
  * [new branch]      patch2 -> patch2
 branch 'patch2' set up to track 'origin/patch2'.
+
 ```
+#### IV В ветке **master** в удаленном репозитории измените комментарии, например, расставьте знаки препинания, переведите комментарии на другой язык.
+В ветке main в удаленном репозитории изменил комментарии(стало):
+```sh
+#include <iostream>//Библиотека для ввода\вывода
+#include <string>//Библиотека для работы со строками
 
-### 4. Создание конфликта (изменение комментариев в main)
-```bash
-git checkout main
-```
 
-**Изменение файла hello_world.cpp:**
-```cpp
-#include <iostream>
-#include <string>
-
-int main() {
-    // Запрос имени у пользователя(Enter username):  
-    std::cout << "Enter your name: ";
-    std::string name;
-    std::cin >> name;
-    // Вывод персонализированного приветствия::
-    std::cout << "Hello world from " << name << std::endl;
-    
+int main()
+{
+    std::string name;//Переменная, хранящая имя пользователя(value, which save user name)
+    std::cout << "Input your name: ";//Печатает комментарий, который говорит, что пользователю необходимо ввести
+    std::cin >> name;//Ввод имени пользователя
+    std::cout << "Hello world from "<<name << std::endl;//Вывод программы
     return 0;
 }
 ```
-
-```bash
-git commit -am "Add punctuation to comments"
-git push origin main
-```
-
-**Результат:**
-```
-[main fc3dd18] Add punctuation to comments
- 1 file changed, 2 insertions(+), 2 deletions(-)
-Username for 'https://github.com': ferdosiakrymskaa-svg
-Password for 'https://ferdosiakrymskaa-svg@github.com': 
-Enumerating objects: 5, done.
-Counting objects: 100% (5/5), done.
-Delta compression using up to 3 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 354 bytes | 354.00 KiB/s, done.
-Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
-remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-To https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git
-   cc1de60..fc3dd18  main -> main
-```
-
-### 5. Появление конфликта в pull-реквесте
-В pull-реквесте появилось уведомление о конфликте.
-
-### 6. Разрешение конфликта через rebase
-```bash
-git checkout patch2
+#### V Убедитесь, что в pull-request появились *конфликтны*.
+Действительно появились конфликты.
+#### VI Для этого локально выполните **pull** + **rebase** (точную последовательность команд, следует узнать самостоятельно). **Исправьте конфликты**.
+Для начала синхронизуем все ветки  локального репозитория с удаленным с помощью команды:
+```sh
 git fetch origin
-git rebase main
 ```
-
-**Возникновение конфликта:**
-```
+Далее вводим команды для `rebase`, но получаем сообщение о конфликте:
+```sh
 Auto-merging hello_world.cpp
 CONFLICT (content): Merge conflict in hello_world.cpp
-error: could not apply df3cfec... Apply Mozilla code style
+error: could not apply 48cdb47... Изменили стиль на Mozzila
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply 48cdb47... Изменили стиль на Mozzila
 ```
-
-**Разрешение конфликта в файле:**
-```cpp
-#include <iostream>
-#include <string>
+Редактируем файл редактором `nano` и получаем в итоге:
+```sh
+#include <iostream> //Библиотека для ввода\вывода
+#include <string> //Библиотека для работы со строками
 
 int
 main()
 {
-  // Запрос имени у пользователя(Enter username):  
-  std::cout << "Enter your name: ";
-  std::string name;
-  std::cin >> name;
-  // Вывод персонализированного приветствия::
-  std::cout << "Hello world from " << name << std::endl;
 
+  
+  std::string name; // Переменная, хранящая имя пользователя(value, which save user name)
+  std::cout << "Input your name: "; // Печатает комментарий, который говорит,
+                                    // что пользователю необходимо ввести
+  std::cin >> name; // Ввод имени пользователя
+  std::cout << "Hello world from " << name << std::endl; // Вывод программы
   return 0;
+
 }
 ```
-
-```bash
-git add hello_world.cpp
-git rebase --continue
-```
-
-**Результат:**
-```
+Теперь добавляем файл командой `git add hello_world.cpp`. Далее выполняем `git rebase --continue`
+Результат работы программы:
+```sh
+[detached HEAD 4ad1a0b] Изменили стиль на Mozzila
+ 1 file changed, 13 insertions(+), 9 deletions(-)
 Successfully rebased and updated refs/heads/patch2.
 ```
-
-### 7. Force push в ветку patch2
-```bash
-git push --force-with-lease origin patch2
-```
-
-**Результат:**
-```
-Username for 'https://github.com': ferdosiakrymskaa-svg
-Password for 'https://ferdosiakrymskaa-svg@github.com': 
-Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+#### VII Сделайте *force push* в ветку `patch2`
+Выполняем команду `git push --force-with-lease origin patch2`.
+Результат работы команды:
+```sh
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 3 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 479 bytes | 479.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 To https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git
- + df3cfec...fc3dd18 patch2 -> patch2 (forced update)
+ + 48cdb47...4ad1a0b patch2 -> patch2 (forced update)
 ```
-
-### 8. Проверка отсутствия конфликтов
-Конфликты в pull-реквесте исчезли.
-
-### 9. Финальная очистка
-```bash
-git branch -d patch2
-git branch
+#### VIII Убедитель, что в pull-request пропали конфликтны. 
+Конфликты действительно пропали.
+#### IX Вмержите pull-request `patch2 -> master`.
+Мержим командой `gh pr merge --merge`.
+Результат работы команды:
+```sh
+✓ Merged pull request #2 (Изменили стиль на Mozzila)
 ```
-
-**Результат:**
-```
-Deleted branch patch2 (was fc3dd18).
-* main
-```
-
----
 
 ## Вывод о проделанной работе
 
@@ -795,5 +677,5 @@ Deleted branch patch2 (was fc3dd18).
 
 **Третий этап** был наиболее сложным и полезным. Была смоделирована ситуация возникновения конфликта при слиянии, когда в разных ветках изменялись одни и те же строки кода. В процессе выполнения был освоен ключевой инструмент разрешения конфликтов — `git rebase`. Этот подход позволяет не просто устранить конфликт, но и переписать историю ветки таким образом, чтобы она начиналась от актуального состояния основной ветки, что делает историю проекта более линейной и чистой. Также был применен `git push --force-with-lease` для отправки изменений после перезаписи истории и финальное слияние pull-реквеста.
 
-В результате выполнения всех трех частей задания были получены практические навыки работы с Git и GitHub, включая создание коммитов, управление ветками, работу с pull-реквестами и разрешение конфликтов слияния. Эти навыки являются фундаментальными для современной командной разработки программного обеспечения.
+В результате выполнения всех трех частей задания были получены практические навыки работы с Git и GitHub, включая создание коммитов, управление ветками, работу с pull-реквестами и разрешение конфликтов слияния. 
 
