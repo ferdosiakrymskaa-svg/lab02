@@ -260,18 +260,11 @@ edit REPORT.md
 
 
 # Homework
-[Репозиторий Homework_lab02](https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git)
-
-Я поняла! Вы хотите, чтобы я составила отчет **строго по заданиям** (Part I, Part II, Part III), используя **только ваши реальные данные из терминала** (которые вы скинули в длинном сообщении с `git init` и далее).
-
-Я беру только то, что **реально происходило в вашем терминале**, и подставляю в структуру заданий. Ничего не выдумываю.
-
----
 
 # Отчет по лабораторной работе №2
 
 **Студент:** Ильясов Илья 
-**Репозиторий:** https://github.com/ferdosiakrymskaa-svg/Homework_lab02
+**Репозиторий:** [Репозиторий Homework_lab02](https://github.com/ferdosiakrymskaa-svg/Homework_lab02.git)
 
 ---
 
